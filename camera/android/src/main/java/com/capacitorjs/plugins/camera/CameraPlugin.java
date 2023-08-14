@@ -54,10 +54,25 @@ import org.json.JSONException;
     name = "Camera",
     permissions = {
         @Permission(strings = { Manifest.permission.CAMERA }, alias = CameraPlugin.CAMERA),
+        // SDK VERSIONS 29 AND BELOW
         @Permission(
             strings = { Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE },
             alias = CameraPlugin.PHOTOS
-        )
+        ),
+        /*
+        SDK VERSIONS 30-32
+        This alias is a placeholder and the PHOTOS alias will be updated to use this permission
+        so that the end user does not need to explicitly use separate aliases depending
+        on the SDK version.
+         */
+        @Permission(strings = { Manifest.permission.READ_EXTERNAL_STORAGE }, alias = CameraPlugin.READ_EXTERNAL_STORAGE),
+        /*
+        SDK VERSIONS 33 AND ABOVE
+        This alias is a placeholder and the PHOTOS alias will be updated to use these permissions
+        so that the end user does not need to explicitly use separate aliases depending
+        on the SDK version.
+         */
+        @Permission(strings = { Manifest.permission.READ_MEDIA_IMAGES }, alias = CameraPlugin.MEDIA)
     }
 )
 public class CameraPlugin extends Plugin {
